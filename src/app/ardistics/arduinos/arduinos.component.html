@@ -1,0 +1,11 @@
+<p>
+  arduinos works!
+</p>
+
+<ion-list>
+  <ion-list-header>Arduinos</ion-list-header>
+
+    <ion-item *ngFor="let p of arduinos; let i = index" lines="none" detail="false">
+      <ion-label>{{ p.nombre_arduino }}</ion-label>
+    </ion-item>
+</ion-list>
