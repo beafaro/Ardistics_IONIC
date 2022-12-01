@@ -4,19 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ArdisticsPageRoutingModule } from './ardistics-routing.module';
+import { HomePageRoutingModule } from './home-routing.module';
 
-import { ArdisticsPage } from './ardistics.page';
+import { HomePage } from './home.page';
 import { ArduinosComponent } from './arduinos/arduinos.component';
+import { EstadoArduinoComponent } from './estado-arduino/estado-arduino.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArdisticsPageRoutingModule
+    HomePageRoutingModule
   ],
-  declarations: [ArdisticsPage, ArduinosComponent],
+  declarations: [HomePage, ArduinosComponent, EstadoArduinoComponent],
   entryComponents:[ArduinosComponent]
 })
-export class ArdisticsPageModule {}
+export class HomePageModule {}

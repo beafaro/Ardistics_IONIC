@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ ardistics }}</ion-title>
+    <ion-title>{{ home }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   
-  <arduinos-component *ngIf="true"></arduinos-component>
+  <arduinos-component *ngIf="true" (evento)="onChangeArduino($event)"></arduinos-component>
 
 </ion-content>
 

@@ -4,12 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'ardistics/arduinos',
+    redirectTo: 'home/arduinos',
     pathMatch: 'full'
   },
   {
-    path: 'ardistics/arduinos',
-    loadChildren: () => import('./ardistics/ardistics.module').then( m => m.ArdisticsPageModule)
+    path: 'home/arduinos',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'home/estado-arduino',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
 ];
 

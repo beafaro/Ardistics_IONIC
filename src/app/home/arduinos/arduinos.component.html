@@ -1,0 +1,11 @@
+<ion-list>
+    <ion-item class="listaArduinos" 
+              *ngFor="let arduino of arduinos; let i = index" 
+              (click)="escogerArduino(arduino)">
+
+      <img class="imagenArduino" src="/assets/icon/arduino_icon35.png" />
+
+      {{ arduino.nombre_arduino }}
+    </ion-item>
+
+</ion-list>

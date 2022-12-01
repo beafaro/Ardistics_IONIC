@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
 import { ApiService, Arduino } from 'src/app/services/api.service';
 
@@ -9,9 +9,13 @@ import { ApiService, Arduino } from 'src/app/services/api.service';
 })
 export class ArduinosComponent implements OnInit {
 
+  @Output() evento = new EventEmitter<any>();
+  id_arduino!: string;
+
   arduinos: Arduino[] = [];
 
-  constructor(private loadingCtrl: LoadingController, private apiService: ApiService) { }
+  constructor(private loadingCtrl: LoadingController, 
+              private apiService: ApiService) { }
 
   ngOnInit() {
     this.cargarArduinos();
@@ -37,4 +41,12 @@ export class ArduinosComponent implements OnInit {
       }
     );
   }
+
+  escogerArduino(arduino: any) {
+    console.log(arduino);
+    this.id_arduino = arduino.id_arduino;
+
+    this.evento.emit(this.id_arduino);
+  }
+
 }
