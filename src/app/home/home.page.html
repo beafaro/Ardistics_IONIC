@@ -8,9 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <arduinos-component *ngIf="id_arduino == null" (eventoSeleccionarArduino)="onChangeArduino($event)"></arduinos-component>
 
-  
-  <arduinos-component *ngIf="true" (evento)="onChangeArduino($event)"></arduinos-component>
-
+  <estado-arduino *ngIf="id_arduino != null" [id_arduino]="id_arduino" (eventoDesSeleccionarArduino)="onChangeArduino($event)"></estado-arduino>
 </ion-content>
 

@@ -9,7 +9,7 @@ import { ApiService, Arduino } from 'src/app/services/api.service';
 })
 export class ArduinosComponent implements OnInit {
 
-  @Output() evento = new EventEmitter<any>();
+  @Output() eventoSeleccionarArduino = new EventEmitter<any>();
   id_arduino!: string;
 
   arduinos: Arduino[] = [];
@@ -42,11 +42,11 @@ export class ArduinosComponent implements OnInit {
     );
   }
 
-  escogerArduino(arduino: any) {
+  seleccionarArduino(arduino: any) {
     console.log(arduino);
     this.id_arduino = arduino.id_arduino;
 
-    this.evento.emit(this.id_arduino);
+    this.eventoSeleccionarArduino.emit(this.id_arduino);
   }
 
 }

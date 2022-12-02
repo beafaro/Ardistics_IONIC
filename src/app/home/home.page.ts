@@ -9,6 +9,7 @@ import { ArduinosComponent } from './arduinos/arduinos.component';
 export class HomePage implements OnInit {
 
   public home!: string;
+  public id_arduino!: string;
 
   constructor() { }
 
@@ -18,6 +19,7 @@ export class HomePage implements OnInit {
 
   onChangeArduino(id_arduino: string) {
     console.log(id_arduino);
+    this.id_arduino = id_arduino;
   }
 
 }
