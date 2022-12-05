@@ -3,16 +3,14 @@ import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
 import { ApiService, Arduino } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'arduinos-component',
+  selector: 'app-arduinos',
   templateUrl: './arduinos.component.html',
   styleUrls: ['./arduinos.component.scss'],
 })
-
 export class ArduinosComponent implements OnInit {
 
-  @Output() eventoSeleccionarArduino = new EventEmitter<any>();
+  @Output() eventoCrearArduino = new EventEmitter<any>();
   id_arduino!: string;
-
   arduinos: Arduino[] = [];
 
   constructor(private loadingCtrl: LoadingController, 
@@ -42,10 +40,27 @@ export class ArduinosComponent implements OnInit {
     );
   }
 
-  seleccionarArduino(arduino: any) {
-    this.id_arduino = arduino.id_arduino;
+  nuevoArduino() {
+    this.eventoCrearArduino.emit("nuevo");
+  }
 
-    this.eventoSeleccionarArduino.emit(this.id_arduino);
+
+  borrarArduino(arduino: any) {
+    this.apiService.deleteArduino(arduino.id_arduino).subscribe(
+      (res) => {
+        const indiceABorrar = this.arduinos.findIndex((ard: any) => {
+            return (ard.id_arduino === arduino.id_arduino);
+        });
+
+        if (-1 != indiceABorrar) {
+            this.arduinos.splice(indiceABorrar, 1);
+        }
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }

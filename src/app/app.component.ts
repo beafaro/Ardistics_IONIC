@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Arduinos', url: '/home/arduinos', icon: 'person' },
+    { title: 'Arduinos', url: '/home/arduinos', icon: 'reader' },
+    { title: 'Gestionar arduinos', url: '/gestion-arduino/arduinos', icon: 'cog' },
+    { title: 'Estadísticas', url: '/estadisticas', icon: 'stats-chart' }
   ];
   constructor() {}
 }

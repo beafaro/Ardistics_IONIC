@@ -7,9 +7,9 @@ import { ApiService, Arduino, EstadoPines } from 'src/app/services/api.service';
   templateUrl: './estado-arduino.component.html',
   styleUrls: ['./estado-arduino.component.scss'],
 })
-
 export class EstadoArduinoComponent implements OnInit {
 
+  arduino!: Arduino;
   @Input() id_arduino!: string;
   @Output() eventoDesSeleccionarArduino = new EventEmitter<any>();
   
@@ -28,6 +28,18 @@ export class EstadoArduinoComponent implements OnInit {
       spinner: 'bubbles',
     });
     await loading.present();
+
+    this.apiService.getArduino(this.id_arduino).subscribe(
+      (res) => {
+        loading.dismiss();
+        this.arduino = res[0];
+ 
+      },
+      (err) => {
+        console.log(err);
+        loading.dismiss();
+      }
+    );
  
     this.apiService.getInfoEstadoPines(this.id_arduino).subscribe(
       (res) => {
@@ -41,12 +53,9 @@ export class EstadoArduinoComponent implements OnInit {
       }
     );
   }
-  
-  
+    
   desSeleccionarArduino(arduino: any) {
-    console.log("Click boton atras");
     this.id_arduino = arduino.id_arduino;
-
     this.eventoDesSeleccionarArduino.emit(this.id_arduino);
   }
   

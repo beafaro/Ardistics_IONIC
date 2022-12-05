@@ -35,6 +35,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getArduino(id: string): Observable<Arduino[]> {
+    return this.http.get<Arduino[]>(
+      `${environment.apiBaseUrl}/arduinos/`+ id, this.httpOptions
+    );
+  }
   getAllArduinos(): Observable<Arduino[]> {
     return this.http.get<Arduino[]>(
       `${environment.apiBaseUrl}/arduinos`, this.httpOptions
@@ -44,6 +49,12 @@ export class ApiService {
   getInfoEstadoPines(id: string): Observable<EstadoPines[]> {
     return this.http.get<EstadoPines[]>(
       `${environment.apiBaseUrl}/getEstadoArduino/`+ id, this.httpOptions
+    );
+  }
+
+  deleteArduino(id: string): Observable<any> {
+    return this.http.delete<any>(
+      `${environment.apiBaseUrl}/arduinos/`+ id, this.httpOptions
     );
   }
 

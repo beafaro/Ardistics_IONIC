@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'home/estado-arduino',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'gestion-arduino/arduinos',
+    loadChildren: () => import('./gestion-arduino/gestion-arduino.module').then( m => m.GestionArduinoPageModule)
+  },
+  {
+    path: 'estadisticas',
+    loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasPageModule)
   }
 ];
 

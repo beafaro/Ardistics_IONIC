@@ -1,10 +1,6 @@
-<p>
-  estado-arduino works!
-  <br>
-  Id del arduino: {{id_arduino}}
-  <br>
-  Nombre del arduino:
-</p>
+<ion-label>
+  {{ arduino != null ? arduino.nombre_arduino : ""}}
+</ion-label>
 
 <div align="center">
   <img class="imagenArduino" src="/assets/images/arduino.png"/>
@@ -21,12 +17,12 @@
     <ng-template #imagenDesactivado>
       <img class="imagenPinDesactivado" src="/assets/icon/luz_gris_icon.png" />
     </ng-template>
-
   </ion-item>
 
 </ion-list>
 
-<ion-button (click) ="desSeleccionarArduino(id_arduino)" shape="round" color="secondary">Volver</ion-button>
-
-<!-- <div *ngIf="condition; else elseBlock">Content to render when condition is true.</div>
-<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="desSeleccionarArduino(id_arduino)" color="primary">Atrás</ion-button>
+  </ion-buttons>
+</ion-toolbar>

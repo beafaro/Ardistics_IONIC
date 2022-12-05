@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ home }}</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,4 +12,3 @@
 
   <estado-arduino *ngIf="id_arduino != null" [id_arduino]="id_arduino" (eventoDesSeleccionarArduino)="onChangeArduino($event)"></estado-arduino>
 </ion-content>
-

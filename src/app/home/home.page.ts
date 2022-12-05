@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ArduinosComponent } from './arduinos/arduinos.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +7,14 @@ import { ArduinosComponent } from './arduinos/arduinos.component';
 })
 export class HomePage implements OnInit {
 
-  public home!: string;
   public id_arduino!: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.home = "Ardistics";
   }
 
   onChangeArduino(id_arduino: string) {
-    console.log(id_arduino);
     this.id_arduino = id_arduino;
   }
-
 }

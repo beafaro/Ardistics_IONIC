@@ -1,0 +1,20 @@
+<ion-list>
+  <ion-item-sliding *ngFor="let arduino of arduinos">
+    <ion-item class="listaArduinos" >
+      <img class="imagenArduino" src="/assets/icon/arduino_icon35.png" />
+    
+      <ion-label>{{ arduino.nombre_arduino }}</ion-label>
+    </ion-item>
+
+    <ion-item-options>
+      <ion-item-option color="danger" (click)="borrarArduino(arduino)">Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="nuevoArduino()" color="success">Nuevo</ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
