@@ -1,12 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
-import { ApiService, Arduino } from 'src/app/services/api.service';
+import { ApiService, Arduino, EstadoPines } from 'src/app/services/api.service';
 
 @Component({
   selector: 'arduinos-component',
   templateUrl: './arduinos.component.html',
   styleUrls: ['./arduinos.component.scss'],
 })
+
 export class ArduinosComponent implements OnInit {
 
   @Output() eventoSeleccionarArduino = new EventEmitter<any>();
@@ -21,7 +22,6 @@ export class ArduinosComponent implements OnInit {
     this.cargarArduinos();
   }
 
-
   async cargarArduinos(event?: InfiniteScrollCustomEvent) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading..',
@@ -29,7 +29,7 @@ export class ArduinosComponent implements OnInit {
     });
     await loading.present();
  
-    this.apiService.getAll().subscribe(
+    this.apiService.getAllArduinos().subscribe(
       (res) => {
         loading.dismiss();
         this.arduinos = res;

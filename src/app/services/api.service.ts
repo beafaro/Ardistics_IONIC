@@ -9,6 +9,14 @@ export interface Arduino {
   nombre_arduino: string;
 }
 
+export interface EstadoPines {
+  id_dato: number;
+  id_arduino: number;
+  num_pin: number;
+  valor: boolean;
+  fecha: Date;
+}
+
 
 
 @Injectable({
@@ -27,9 +35,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Arduino[]> {
+  getAllArduinos(): Observable<Arduino[]> {
     return this.http.get<Arduino[]>(
       `${environment.apiBaseUrl}/arduinos`, this.httpOptions
     );
   }
+
+  getInfoEstadoPines(id: string): Observable<EstadoPines[]> {
+    return this.http.get<EstadoPines[]>(
+      `${environment.apiBaseUrl}/getEstadoArduino/`+ id, this.httpOptions
+    );
+  }
+
 }

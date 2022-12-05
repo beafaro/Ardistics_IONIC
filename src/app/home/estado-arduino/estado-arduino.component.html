@@ -2,7 +2,31 @@
   estado-arduino works!
   <br>
   Id del arduino: {{id_arduino}}
+  <br>
+  Nombre del arduino:
 </p>
 
+<div align="center">
+  <img class="imagenArduino" src="/assets/images/arduino.png"/>
+</div>
+
+<ion-list>
+  <ion-item class="listaPines" *ngFor="let estado of estadoPines">
+    Pin {{ estado.id_dato }}:
+
+    <div *ngIf="estado.valor; else imagenDesactivado"> 
+      <img class="imagenPinActivado" src="/assets/icon/luz_verde_icon.png" />
+    </div>
+
+    <ng-template #imagenDesactivado>
+      <img class="imagenPinDesactivado" src="/assets/icon/luz_gris_icon.png" />
+    </ng-template>
+
+  </ion-item>
+
+</ion-list>
 
 <ion-button (click) ="desSeleccionarArduino(id_arduino)" shape="round" color="secondary">Volver</ion-button>
+
+<!-- <div *ngIf="condition; else elseBlock">Content to render when condition is true.</div>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->

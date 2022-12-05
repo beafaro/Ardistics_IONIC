@@ -1,22 +1,50 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
+import { ApiService, Arduino, EstadoPines } from 'src/app/services/api.service';
 
 @Component({
   selector: 'estado-arduino',
   templateUrl: './estado-arduino.component.html',
   styleUrls: ['./estado-arduino.component.scss'],
 })
+
 export class EstadoArduinoComponent implements OnInit {
 
   @Input() id_arduino!: string;
   @Output() eventoDesSeleccionarArduino = new EventEmitter<any>();
+  
+  estadoPines: EstadoPines[] = [];
 
-  constructor() { }
+  constructor(private loadingCtrl: LoadingController, 
+              private apiService: ApiService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cargarEstadoArduino();
+  }
+
+  async cargarEstadoArduino(event?: InfiniteScrollCustomEvent) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading..',
+      spinner: 'bubbles',
+    });
+    await loading.present();
+ 
+    this.apiService.getInfoEstadoPines(this.id_arduino).subscribe(
+      (res) => {
+        loading.dismiss();
+        this.estadoPines = res;
+ 
+      },
+      (err) => {
+        console.log(err);
+        loading.dismiss();
+      }
+    );
+  }
   
   
   desSeleccionarArduino(arduino: any) {
-    //console.log(arduino);
+    console.log("Click boton atras");
     this.id_arduino = arduino.id_arduino;
 
     this.eventoDesSeleccionarArduino.emit(this.id_arduino);
