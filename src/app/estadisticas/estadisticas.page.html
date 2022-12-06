@@ -10,5 +10,60 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  ssssssss
+  <ion-list>
+    <ion-item>
+      <ion-select [(ngModel)]="filtroArduino" placeholder="Arduino" (ionChange)="cargarPines()">
+        <ion-select-option *ngFor="let arduino of arduinos" value="{{arduino.id_arduino}}">{{arduino.nombre_arduino}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select [(ngModel)]="filtroPin" placeholder="Pin">
+        <ion-select-option *ngFor="let pin of pines" value="{{pin}}">{{pin}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select [(ngModel)]="filtroEstadistica" placeholder="Estadística">
+        <ion-select-option value="NUM_VECES">Número de cambios</ion-select-option>
+        <ion-select-option value="TIEMPO">Tiempo activo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha inicio</ion-label>
+      <ion-datetime-button  datetime="fechaInicio"></ion-datetime-button>
+      
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime [(ngModel)]="filtroFechaInicio" id="fechaInicio"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha fin</ion-label>
+      <ion-datetime-button datetime="fechaFin"></ion-datetime-button>
+    
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime [(ngModel)]="filtroFechaFin" id="fechaFin"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-item>
+      <ion-select [(ngModel)]="filtroIntervalo" placeholder="Intervalo">
+        <ion-select-option value="DIA">Día</ion-select-option>
+        <ion-select-option value="MES">Mes</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="calcular()" color="primary">Calcular</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-content>

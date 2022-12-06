@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -15,7 +15,9 @@ import { GestionArduinoComponent } from './gestion-arduino/gestion-arduino.compo
     CommonModule,
     FormsModule,
     IonicModule,
-    GestionArduinoPageRoutingModule
+    GestionArduinoPageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [GestionArduinoPage, ArduinosComponent, GestionArduinoComponent],
   entryComponents:[ArduinosComponent]

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 export interface Arduino {
   id_arduino: number;
   nombre_arduino: string;
+  num_pines: number;
 }
 
 export interface EstadoPines {
@@ -40,6 +41,7 @@ export class ApiService {
       `${environment.apiBaseUrl}/arduinos/`+ id, this.httpOptions
     );
   }
+  
   getAllArduinos(): Observable<Arduino[]> {
     return this.http.get<Arduino[]>(
       `${environment.apiBaseUrl}/arduinos`, this.httpOptions
@@ -49,6 +51,18 @@ export class ApiService {
   getInfoEstadoPines(id: string): Observable<EstadoPines[]> {
     return this.http.get<EstadoPines[]>(
       `${environment.apiBaseUrl}/getEstadoArduino/`+ id, this.httpOptions
+    );
+  }
+
+  getDatosArduino(id: string, pin: number): Observable<EstadoPines[]> {
+    return this.http.get<EstadoPines[]>(
+      `${environment.apiBaseUrl}/getDatosArduino/`+ id + `/pin/` + pin, this.httpOptions
+    );
+  }
+
+  createArduino(arduino: any): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiBaseUrl}/arduinos`, arduino, this.httpOptions
     );
   }
 

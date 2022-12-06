@@ -1,9 +1,25 @@
-<p>
-  formaulario para aañadir nuevo arduino works!hguklyfvlivlvlvluvilv
-</p>
+<h1>Nuevo arduino</h1>
 
-<ion-toolbar>
-  <ion-buttons slot="end">
-    <ion-button (click)="volverListadoArduinos()" color="primary">Atrás</ion-button>
-  </ion-buttons>
-</ion-toolbar>
+<ion-content>
+  <form [formGroup]="formulario">
+    <ion-item>
+      <ion-input formControlName="nombre_arduino" type="text" placeholder="Nombre del Arduino"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName="num_pines" placeholder="Número de pines"></ion-input>
+    </ion-item>
+
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="volverListadoArduinos()" color="primary">Atrás</ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="crearArduino()" color="success">Agregar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+  </form>
+</ion-content>
+
+
