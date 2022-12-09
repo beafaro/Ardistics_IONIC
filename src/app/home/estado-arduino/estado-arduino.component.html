@@ -1,6 +1,8 @@
-<ion-label>
-  {{ arduino != null ? arduino.nombre_arduino : ""}}
-</ion-label>
+<div align="center" style="margin-bottom: 20px; margin-top: 20px; font-size: 24px; text-decoration: underline;">
+  <ion-label>
+    {{ arduino != null ? arduino.nombre_arduino : ""}}
+  </ion-label>
+</div>
 
 <div align="center">
   <img class="imagenArduino" src="/assets/images/arduino.png"/>
@@ -8,15 +10,17 @@
 
 <ion-list>
   <ion-item class="listaPines" *ngFor="let estado of estadoPines">
-    Pin {{ estado.id_dato }}:
+    Pin {{ estado.id_dato }}
 
-    <div *ngIf="estado.valor; else imagenDesactivado"> 
-      <img class="imagenPinActivado" src="/assets/icon/luz_verde_icon.png" />
+    <div style="margin-left: 20px;">
+      <div *ngIf="estado.valor; else imagenDesactivado"> 
+        <img class="imagenPinActivado" src="/assets/icon/luz_verde_icon.png" />
+      </div>
+
+      <ng-template #imagenDesactivado>
+        <img class="imagenPinDesactivado" src="/assets/icon/luz_gris_icon.png" />
+      </ng-template>
     </div>
-
-    <ng-template #imagenDesactivado>
-      <img class="imagenPinDesactivado" src="/assets/icon/luz_gris_icon.png" />
-    </ng-template>
   </ion-item>
 
 </ion-list>

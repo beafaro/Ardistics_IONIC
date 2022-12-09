@@ -66,4 +66,13 @@
       <ion-button (click)="calcular()" color="primary">Calcular</ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-card>
+    <!-- <ion-card-header>
+      Line Chart
+    </ion-card-header> -->
+    <ion-card-content>
+      <canvas #lineCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
