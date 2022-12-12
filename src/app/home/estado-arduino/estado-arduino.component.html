@@ -10,7 +10,7 @@
 
 <ion-list>
   <ion-item class="listaPines" *ngFor="let estado of estadoPines">
-    Pin {{ estado.id_dato }}
+    Pin {{ estado.num_pin }}
 
     <div style="margin-left: 20px;">
       <div *ngIf="estado.valor; else imagenDesactivado"> 
@@ -27,6 +27,6 @@
 
 <ion-toolbar>
   <ion-buttons slot="end">
-    <ion-button (click)="desSeleccionarArduino(id_arduino)" color="primary">Atrás</ion-button>
+    <ion-button (click)="desSeleccionarArduino(id_arduino)">Atrás</ion-button>
   </ion-buttons>
 </ion-toolbar>

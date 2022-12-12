@@ -11,6 +11,7 @@ export class GestionArduinoComponent implements OnInit {
 
   @Output() eventoVolverListadoArduinos = new EventEmitter<any>();
   formulario!: FormGroup;
+  hayErrores: boolean = false;
 
   constructor(private apiService: ApiService, public formBuilder: FormBuilder) { 
   }
@@ -23,6 +24,13 @@ export class GestionArduinoComponent implements OnInit {
   }
 
   crearArduino() {
+    if (this.formulario.value.nombre_arduino == "" || this.formulario.value.num_pines == "") {
+      this.hayErrores = true;
+      return;    
+    } else {
+      this.hayErrores = false;
+    }
+
     console.log(this.formulario.value);
 
     this.apiService.createArduino(this.formulario.value).subscribe(

@@ -18,6 +18,8 @@ export class EstadisticasPage implements OnInit {
 
   @ViewChild('lineCanvas') private lineCanvas!: ElementRef;
   lineChart: any;
+  datosCalculados: boolean = false;
+  hayErrores: boolean = false;
 
   arduinos: Arduino[] = [];
   pines: number[] = [];
@@ -78,6 +80,15 @@ export class EstadisticasPage implements OnInit {
 
 
   calcular() {
+    if (this.filtroArduino == undefined || this.filtroEstadistica == undefined || this.filtroIntervalo == undefined || this.filtroPin == undefined) {
+      this.hayErrores = true;
+      return;    
+    } else {
+      this.hayErrores = false;
+    }
+    
+    this.datosCalculados = true;
+
     this.apiService.getDatosArduino(this.filtroArduino, this.filtroPin).subscribe(
       (res) => {        
 

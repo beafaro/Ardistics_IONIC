@@ -8,14 +8,18 @@
     <ion-item>
       <ion-input formControlName="num_pines" placeholder="Número de pines"></ion-input>
     </ion-item>
+    
+    <div *ngIf="hayErrores">
+      <ion-label slot="start" color="danger">*Todos los campos son obligatorios</ion-label>
+    </div>
 
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-button (click)="volverListadoArduinos()" color="primary">Atrás</ion-button>
+        <ion-button (click)="volverListadoArduinos()">Atrás</ion-button>
       </ion-buttons>
 
       <ion-buttons slot="end">
-        <ion-button (click)="crearArduino()" color="success">Agregar</ion-button>
+        <ion-button class="botonAgregar" (click)="crearArduino()">Agregar</ion-button>
       </ion-buttons>
     </ion-toolbar>
 
